@@ -44,7 +44,7 @@ func UpdateRecord(record *Record) (err error) {
 	Config.DB.Save(record)
 	return nil
 }
-func DeleteRecord(record *Record, id string) (err error) {
-	Config.DB.Where("id = ?", id).Delete(record)
+func DeleteRecord(record *Record, roll string) (err error) {
+	Config.DB.Where("roll = ?", roll).Delete(record)
 	return nil
 }
