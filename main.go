@@ -1,10 +1,11 @@
 package main
 
 import (
-	"day3/Config"
-	"day3/Models"
-	"day3/Routes"
 	"fmt"
+
+	"github.com/harshil-jain-08/day3/Config"
+	"github.com/harshil-jain-08/day3/Models"
+	"github.com/harshil-jain-08/day3/Routes"
 	"github.com/jinzhu/gorm"
 )
 
@@ -21,6 +22,6 @@ func main() {
 	Config.DB.AutoMigrate(&Models.Record{})
 
 	r := Routes.SetupRouter()
-	//running
+	// running
 	r.Run()
 }

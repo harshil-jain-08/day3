@@ -1,10 +1,11 @@
 package Controllers
 
 import (
-	"day3/Models"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"github.com/harshil-jain-08/day3/Models"
 )
 
 func GetRecords(c *gin.Context) {

@@ -1,8 +1,9 @@
 package Models
 
 import (
-	"day3/Config"
 	"fmt"
+
+	"github.com/harshil-jain-08/day3/Config"
 )
 
 func GetRecord(Record *[]Record) (err error) {
@@ -33,6 +34,7 @@ func GetRecordBySubject(record *[]Record, subject string) (err error) {
 	}
 	return nil
 }
+
 func GetRecordByRollAndSub(record *Record, subject string, roll string) (err error) {
 	if err = Config.DB.Where("subject = ? AND roll = ?", subject, roll).Find(&record).Error; err != nil {
 		return err
