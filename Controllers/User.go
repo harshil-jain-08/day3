@@ -63,7 +63,7 @@ func GetRecordByRollAndSub(c *gin.Context) {
 	}
 }
 
-func UpdateRecord(c *gin.Context) {
+/*func UpdateRecord(c *gin.Context) {
 	var record Models.Record
 	roll := c.Params.ByName("roll")
 	subject := c.Params.ByName("subject")
@@ -78,7 +78,7 @@ func UpdateRecord(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, record)
 	}
-}
+}*/
 
 func DeleteRecordbyRoll(c *gin.Context) {
 	var user Models.Record
