@@ -1,4 +1,4 @@
-module day3
+module github.com/harshil-jain-08/day3
 
 go 1.16
 
