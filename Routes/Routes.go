@@ -15,6 +15,7 @@ func SetupRouter() *gin.Engine {
 		grp1.GET("roll/:roll", Controllers.GetRecordbyRoll)
 		grp1.GET("sub/:subject", Controllers.GetRecordBySubject)
 		grp1.GET("rollandsub/:roll/:subject", Controllers.GetRecordByRollAndSub)
+		// grp1.GET("roll/:roll/sub/:subject", Controllers.GetRecordByRollAndSub)
 		// grp1.PUT("update/:roll/:subject", Controllers.UpdateRecord)
 		grp1.DELETE("user/:roll", Controllers.DeleteRecordbyRoll)
 	}

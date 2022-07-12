@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/harshil-jain-08/day3/repo"
+	"github.com/harshil-jain-08/day3/service"
 
 	"github.com/harshil-jain-08/day3/Config"
 	"github.com/harshil-jain-08/day3/Models"
@@ -18,10 +20,21 @@ func main() {
 		fmt.Println("Status:", err)
 	}
 
-	defer Config.DB.Close()
+	defer func() {
+		err := Config.DB.Close()
+		if err != nil {
+			fmt.Println("Closing DB failed with error: ", err.Error())
+		}
+	}()
+
 	Config.DB.AutoMigrate(&Models.Record{})
+
+	service.NewService(repo.NewRepo())
 
 	r := Routes.SetupRouter()
 	// running
-	r.Run()
+	err = r.Run()
+	if err != nil {
+		panic(any(err))
+	}
 }

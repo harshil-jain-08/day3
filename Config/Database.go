@@ -22,7 +22,7 @@ func BuildDBConfig() *DBConfig {
 		Host:     "localhost",
 		Port:     3306,
 		User:     "root",
-		Password: "MyNewPass",
+		Password: "aaaaaaaa",
 		DBName:   "bootcamp",
 	}
 	return &dbConfig

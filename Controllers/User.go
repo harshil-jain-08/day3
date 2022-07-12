@@ -2,6 +2,8 @@ package Controllers
 
 import (
 	"fmt"
+	"github.com/harshil-jain-08/day3/dto"
+	"github.com/harshil-jain-08/day3/service"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -10,7 +12,7 @@ import (
 
 func GetRecords(c *gin.Context) {
 	var record []Models.Record
-	err := Models.GetRecord(&record)
+	err := service.Svc.GetRecord(&record)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
@@ -19,21 +21,21 @@ func GetRecords(c *gin.Context) {
 }
 
 func CreateRecord(c *gin.Context) {
-	var record Models.Record
+	var record dto.Record
 	c.BindJSON(&record)
-	err := Models.CreateRecord(&record)
+	_, err := service.Svc.CreateRecord(&record)
 	if err != nil {
 		fmt.Println(err.Error())
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
-		c.JSON(http.StatusOK, record)
+		c.JSON(http.StatusOK, map[string]bool{"success": true})
 	}
 }
 
 func GetRecordbyRoll(c *gin.Context) {
 	roll := c.Params.ByName("roll")
 	var records []Models.Record
-	err := Models.GetRecordByRoll(&records, roll)
+	err := service.Svc.GetRecordByRoll(&records, roll)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
@@ -44,7 +46,7 @@ func GetRecordbyRoll(c *gin.Context) {
 func GetRecordBySubject(c *gin.Context) {
 	subject := c.Params.ByName("subject")
 	var records []Models.Record
-	err := Models.GetRecordBySubject(&records, subject)
+	err := service.Svc.GetRecordBySubject(&records, subject)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
@@ -56,7 +58,7 @@ func GetRecordByRollAndSub(c *gin.Context) {
 	roll := c.Params.ByName("roll")
 	subject := c.Params.ByName("subject")
 	var record Models.Record
-	err := Models.GetRecordByRollAndSub(&record, subject, roll)
+	err := service.Svc.GetRecordByRollAndSub(&record, subject, roll)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
@@ -84,7 +86,7 @@ func GetRecordByRollAndSub(c *gin.Context) {
 func DeleteRecordbyRoll(c *gin.Context) {
 	var user Models.Record
 	roll := c.Params.ByName("roll")
-	err := Models.DeleteRecord(&user, roll)
+	err := service.Svc.DeleteRecord(&user, roll)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
