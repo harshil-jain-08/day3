@@ -2,9 +2,10 @@ package Controllers
 
 import (
 	"fmt"
+	"net/http"
+
 	"github.com/harshil-jain-08/day3/dto"
 	"github.com/harshil-jain-08/day3/service"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/harshil-jain-08/day3/Models"
